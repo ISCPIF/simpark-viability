@@ -37,8 +37,8 @@ object LakeViabilityKernel extends App {
 
   println(steps)
 
-  saveVTK2D(ak, "/tmp/res.vtk")
+  saveVTK2D(ak, "/tmp/resparc.vtk")
 
- // println(volume(res))
+ //println(volume(res))
 
 }
