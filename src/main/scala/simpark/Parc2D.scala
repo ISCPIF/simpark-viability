@@ -31,14 +31,14 @@ case class Parc2D(
                    a: Double = 8.0,
                    c: Double = 0.5,
                    r: Double = 1.0,
-                   K: Double = 10000.0,
-                   eps: Double = 20
+                   K: Double = 100.0,
+                   eps: Double = 10
                    // valeurs de controle: d control(0) et epsilon control(1)
                   ) {
 
   def dynamic(state: Vector[Double], control: Vector[Double]) = {
     // A: state(0), T: state(1), E: state(2)
-    def ADot(state: Vector[Double], t: Double) = state(0) * g * (1 - state(0)/(1+ M/log(1/(1+eps)))) - h * state(1) * state(0)
+    def ADot(state: Vector[Double], t: Double) = state(0) * g * (1 - state(0)/(1+ M/log(state(1)/(1+eps)))) - h * state(1) * state(0)
     // def yDot(state: Array[Double], t: Double) = b*state(1)-r*math.pow(state(1),8)/(pow(m,8)+pow(state(1),8))
     def TDot(state: Vector[Double], t: Double) = state(1) * ( a * state(0)  - c * state(1) - control(0))
    // state(0) - (b * state(1) - r * math.pow(state(1), 8) / (1 + pow(state(1), 8)))

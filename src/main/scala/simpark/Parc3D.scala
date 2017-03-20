@@ -30,8 +30,8 @@ case class Parc3D(
                    a: Double = 8.0,
                    c: Double = 0.5,
                    r: Double = 1.0,
-                   K: Double = 10000.0,
-                   eps: Double = 20
+                   K: Double = 100.0,
+                   eps: Double = 10
                    // valeurs de controle: d control(0) et epsilon control(1)
                  ) {
 
