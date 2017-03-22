@@ -18,7 +18,6 @@ package simpark
  */
 
 import viabilitree.model._
-import math._
 
 case class Parc2D(
                    integrationStep: Double = 0.01,
@@ -28,19 +27,21 @@ case class Parc2D(
                    M: Double = 5000.0,
                    h: Double = 0.001,
                    b: Double = 1.0,
-                   a: Double = 8.0,
-                   c: Double = 0.5,
+                   a: Double = 10.0,
+                   c: Double = 1.0,
+                   d: Double = 10.0,
                    r: Double = 1.0,
                    K: Double = 100.0,
-                   eps: Double = 10
-                   // valeurs de controle: d control(0) et epsilon control(1)
+                   eps: Double = 80,
+                   eta: Double = 0.005
+                   // valeurs de controle: eps control(0) et d control(1)
                   ) {
 
   def dynamic(state: Vector[Double], control: Vector[Double]) = {
     // A: state(0), T: state(1), E: state(2)
-    def ADot(state: Vector[Double], t: Double) = state(0) * g * (1 - state(0)/(1+ M/log(state(1)/(1+eps)))) - h * state(1) * state(0)
+    def ADot(state: Vector[Double], t: Double) = state(0)*g*(1-state(0)/( 1+M/(1+eta*state(1)/(control(0)+1)) ) )-h*state(1)*state(0)
     // def yDot(state: Array[Double], t: Double) = b*state(1)-r*math.pow(state(1),8)/(pow(m,8)+pow(state(1),8))
-    def TDot(state: Vector[Double], t: Double) = state(1) * ( a * state(0)  - c * state(1) - control(0))
+    def TDot(state: Vector[Double], t: Double) = state(1) * ( a * state(0)  - c * state(1) - d)
    // state(0) - (b * state(1) - r * math.pow(state(1), 8) / (1 + pow(state(1), 8)))
    // def EDot(state: Vector[Double], t: Double)= state(2) * r * (1 - state(2)/K ) - s * state(1) *state(2) + control(1) * state(1) * (K - state(2))
     val dynamic = Dynamic(ADot, TDot)
