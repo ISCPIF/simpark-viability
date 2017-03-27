@@ -38,7 +38,7 @@ case class Parc2D_B(
   def dynamic(state: Vector[Double], control: Vector[Double]) = {
     // A: state(0), T: state(1), E: state(2)
     // def ADot(state: Vector[Double], t: Double) =state(0)*g*(1-state(0)/( 1+M/(1+eta)))
-    def ADot (state: Vector[Double], t: Double)= state(0)*g*(1-state(0)/( 1+M/(1+eta*state(1)/(eps+1)) ) )-control(0)*l*state(1)*state(0)
+    def ADot (state: Vector[Double], t: Double)= state(0)*g*(1-state(0)/( 1+M/(1+eta*state(1)/(control(1)+1)) ) )-control(0)*l*state(1)*state(0)
     def TDot(state: Vector[Double], t: Double) = state(1) * (  -  c * state(1)/(state(1)+phi)-d)+ a*control(0)*state(0)
     val dynamic = Dynamic(ADot, TDot)
     dynamic.integrate(state.toArray, integrationStep, timeStep)
