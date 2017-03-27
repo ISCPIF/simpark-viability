@@ -11,8 +11,8 @@ object Parc2DViabilityKernel extends App {
   val vk = KernelComputation(
     dynamic = parc.dynamic,
     depth = 16,
-    zone = Vector((4000.0, 5000.0), (8000.0, 10000.0)),
-    controls = Vector((0.0 to 0.1 by 0.02),(0.0 to 100.0 by 20.0))
+    zone = Vector((3000.0, 5000.0), (5000.0, 7500.0)),
+    controls = Vector((0.02 to 0.04 by 0.02 ))
   )
   val (ak, steps) = approximate(vk, rng)
 
