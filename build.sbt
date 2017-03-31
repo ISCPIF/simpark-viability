@@ -3,7 +3,8 @@ name := "simpark-viability"
 
 scalaVersion := "2.12.1"
 
-def viabilitreeVersion = "2.0-alpha1"
+def viabilitreeVersion = "2.0-alpha2"
+//def viabilitreeVersion = "2.0-SNAPSHOT"
 
 resolvers += Resolver.sonatypeRepo("public")
 resolvers += Resolver.sonatypeRepo("snapshots")

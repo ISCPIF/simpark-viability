@@ -18,7 +18,6 @@ package simpark
  */
 
 import viabilitree.model._
-
 import scala.math._
 
 case class Lake(
