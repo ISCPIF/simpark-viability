@@ -11,7 +11,7 @@ object Parc3DViabilityKernel extends App {
 
   val vk = KernelComputation(
     dynamic = parc.dynamic,
-    depth = 21,
+    depth = 21 ,
     zone = Vector((0.0, 25000.0), (2000.0, 5000.0), (1500.0, 2500.0)),
     controls = (x: Vector[Double]) =>
       for {
