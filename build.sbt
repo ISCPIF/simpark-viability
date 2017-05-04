@@ -1,9 +1,9 @@
 
 name := "simpark-viability"
 
-scalaVersion := "2.12.1"
+scalaVersion := "2.12.2"
 
-def viabilitreeVersion = "2.0-alpha4"
+def viabilitreeVersion = "2.0-alpha5"
 //def viabilitreeVersion = "2.0-SNAPSHOT"
 
 resolvers += Resolver.sonatypeRepo("public")
