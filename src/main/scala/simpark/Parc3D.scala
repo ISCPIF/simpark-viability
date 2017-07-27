@@ -21,7 +21,7 @@ import viabilitree.model._
 
 case class Parc3D(
                    integrationStep: Double = 0.01,
-                   timeStep: Double = 0.1,
+                   timeStep: Double = 0.05,
                    //zeta: Double = 0.01,
                    l: Double = 0.01,
                    g: Double = 1.0,

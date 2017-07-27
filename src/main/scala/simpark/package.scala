@@ -11,8 +11,8 @@ object Parc3DViabilityKernel extends App {
 
   val vk = KernelComputation(
     dynamic = parc.dynamic,
-    depth = 21 ,
-    zone = Vector((0.0, 25000.0), (2000.0, 5000.0), (1500.0, 2500.0)),
+    depth = 18,
+    zone = Vector((20000.0, 24000.0), (1.0, 10000.0), (1.0, 5000.0)),
     controls = (x: Vector[Double]) =>
       for {
         zeta <- (0.01 to 0.02 by 0.01 )
@@ -23,11 +23,14 @@ object Parc3DViabilityKernel extends App {
 
   val (ak, steps) = approximate(vk, rng)
 
+
+
+  saveVTK3D(ak, s"/Users/laetitiazaleski/Desktop/results/resparc3CATDepth${vk.depth}2controls_2.vtk")
+  saveHyperRectangles(vk)(ak,s"/Users/laetitiazaleski/Desktop/results/rescat5WithControlD${vk.depth}.txt")
+//  saveHyperRectangles(vk)(ak,s"/tmp/rescatWithControlD${vk.depth}.txt")
+//  saveHyperRectangles(vk)(ak,s"/tmp/resparcCATWithControlD${vk.depth}.txt")
+
   println(steps)
-
-  saveVTK3D(ak, s"/tmp/resparcCATDepth${vk.depth}2controls.vtk")
-  saveHyperRectangles(vk)(ak,s"/tmp/resparcCATWithControlD${vk.depth}.txt")
-
   //println(volume(res))
 
 }

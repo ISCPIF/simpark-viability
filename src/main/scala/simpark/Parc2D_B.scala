@@ -26,10 +26,10 @@ case class Parc2D_B(
                      M: Double = 5000.0,
                      a: Double = 100.0,
                      c: Double = 0.01,
-                     eta: Double = 0.0005,
+                     eta: Double = 0.001,
                      d: Double = 1.0,
                      phi: Double =1.0,
-                     p: Double =0.2,
+                     p: Double =0.3,
                      l: Double = 0.01
                      // valeurs de controle: eps control(1) et zeta control(0)
                    ) {

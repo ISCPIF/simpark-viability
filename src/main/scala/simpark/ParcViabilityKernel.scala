@@ -11,13 +11,13 @@ object Parc2DViabilityKernel extends App {
 
   val vk = KernelComputation(
     dynamic = parc.dynamic,
-    depth = 20,
-    zone = Vector((0.0, 1000.0), (1500.0, 3000.0)),
+    depth = 16,
+    zone = Vector((1000.0, 3000.0), (3000.0, 3800.0)),
    // controls = Vector((0.02 to 0.4 by 0.02 ))
    controls = (x: Vector[Double]) =>
       for {
         c1 <- (0.02 to 0.04 by 0.02 )
-        c2 <- (0.0 to 100.0 by 10.0)
+        c2 <- (0.0 to 10.0 by 10.0)
       } yield Control(c1, c2)
 
 
@@ -29,8 +29,9 @@ object Parc2DViabilityKernel extends App {
   println(steps)
 
 
-  saveVTK2D(ak, s"/tmp/resparcDepth${vk.depth}2controls_6.vtk")
-  saveHyperRectangles(vk)(ak,s"/tmp/resparcWithControlD${vk.depth}.txt")
+  saveVTK2D(ak, s"/Users/laetitiazaleski/Desktop/results/resparc2_2DDepth${vk.depth}2controls_Touristes.vtk")
+  saveHyperRectangles(vk)(ak,s"/Users/laetitiazaleski/Desktop/results/resparc2DBWithControlD${vk.depth}_Touristes.txt")
+ // saveHyperRectangles(vk)(ak,s"/tmp/resparcWithControlD${vk.depth}.txt")
 
   //println(volume(res))
 
